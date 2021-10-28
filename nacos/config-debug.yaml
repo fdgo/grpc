@@ -1,0 +1,7 @@
+host: '192.168.164.128'
+port: 8848
+namespace: '8ee6b663-af86-4ef3-a365-4ff7012cbca4'
+user: 'nacos'
+password: 'nacos'
+dataid: 'user-web'
+group: 'dev'

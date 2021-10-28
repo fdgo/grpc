@@ -1,0 +1,59 @@
+2021-10-17T17:22:05.711+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-10-17T17:22:05.714+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-10-17T17:22:05.725+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-10-17T17:24:09.726+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-10-17T17:24:09.729+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-10-17T17:24:09.741+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-10-17T17:35:13.381+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"userop-web.json","group":"dev","tenant":"95c8fe3c-f5e1-4115-b583-9b6fee0b55bc"}>, call domain error:<Get "http://192.168.0.104:8848/nacos/v1/cs/configs?dataId=userop-web.json&group=dev&tenant=95c8fe3c-f5e1-4115-b583-9b6fee0b55bc": dial tcp 192.168.0.104:8848: i/o timeout (Client.Timeout exceeded while awaiting headers)> , result:<>
+2021-10-17T17:36:35.105+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"userop-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-10-17T17:36:35.108+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"userop-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-10-17T17:36:35.110+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"userop-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-10-17T17:36:35.110+0800	[34mINFO[0m	get config from server error:[404] config data not exist
+ 
+2021-10-17T17:36:35.111+0800	[33mWARN[0m	[client.GetConfig] config not found, dataId: userop-web, group: dev, namespaceId: 8ee6b663-af86-4ef3-a365-4ff7012cbca4.
+2021-10-17T17:36:35.114+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:userop-webdev8ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-10-17T17:36:35.116+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-10-17T17:36:35.127+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:userop-webdev8ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-10-17T17:37:18.863+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-10-17T17:37:18.867+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-10-17T17:37:18.877+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-10-17T17:39:36.395+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-10-17T17:39:36.398+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-10-17T17:39:36.410+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-10-17T17:39:49.279+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-10-17T17:39:49.282+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-10-17T17:39:49.293+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdevaf452727717a9615e075400b19ea1fe18ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-10-17T17:40:14.495+0800	[34mINFO[0m	[client.ListenConfig] config changed:user-web%02dev%028ee6b663-af86-4ef3-a365-4ff7012cbca4%01
+
+2021-10-17T17:40:14.511+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdev9ced05fba7f030842940500ac2ccc5c28ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-10-17T17:40:45.219+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<Get "http://192.168.164.1283:8848/nacos/v1/cs/configs?dataId=user-web&group=dev&tenant=8ee6b663-af86-4ef3-a365-4ff7012cbca4": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2021-10-17T17:40:50.222+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<Get "http://192.168.164.1283:8848/nacos/v1/cs/configs?dataId=user-web&group=dev&tenant=8ee6b663-af86-4ef3-a365-4ff7012cbca4": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2021-10-17T17:40:55.223+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<Get "http://192.168.164.1283:8848/nacos/v1/cs/configs?tenant=8ee6b663-af86-4ef3-a365-4ff7012cbca4&dataId=user-web&group=dev": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2021-10-17T17:40:55.223+0800	[34mINFO[0m	get config from server error:Get "http://192.168.164.1283:8848/nacos/v1/cs/configs?tenant=8ee6b663-af86-4ef3-a365-4ff7012cbca4&dataId=user-web&group=dev": context deadline exceeded (Client.Timeout exceeded while awaiting headers) 
+2021-10-17T17:40:55.227+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdev9ced05fba7f030842940500ac2ccc5c28ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-10-17T17:41:17.190+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<Get "http://192.168.164.1283:8848/nacos/v1/cs/configs?group=dev&tenant=8ee6b663-af86-4ef3-a365-4ff7012cbca4&dataId=user-web": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2021-10-17T17:41:22.192+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<Get "http://192.168.164.1283:8848/nacos/v1/cs/configs?dataId=user-web&group=dev&tenant=8ee6b663-af86-4ef3-a365-4ff7012cbca4": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2021-10-17T17:41:27.192+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"user-web","group":"dev","tenant":"8ee6b663-af86-4ef3-a365-4ff7012cbca4"}>, call domain error:<Get "http://192.168.164.1283:8848/nacos/v1/cs/configs?dataId=user-web&group=dev&tenant=8ee6b663-af86-4ef3-a365-4ff7012cbca4": context deadline exceeded (Client.Timeout exceeded while awaiting headers)> , result:<>
+2021-10-17T17:41:27.193+0800	[34mINFO[0m	get config from server error:Get "http://192.168.164.1283:8848/nacos/v1/cs/configs?dataId=user-web&group=dev&tenant=8ee6b663-af86-4ef3-a365-4ff7012cbca4": context deadline exceeded (Client.Timeout exceeded while awaiting headers) 
+2021-10-17T17:41:27.206+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-webdev9ced05fba7f030842940500ac2ccc5c28ee6b663-af86-4ef3-a365-4ff7012cbca4 tenant:8ee6b663-af86-4ef3-a365-4ff7012cbca4] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+

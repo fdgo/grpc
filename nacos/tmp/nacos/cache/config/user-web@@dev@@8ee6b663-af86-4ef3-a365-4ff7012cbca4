@@ -1,0 +1,15 @@
+jwt:
+ key: 'abcd1234%%$$saa'
+
+sms:
+ key: 'abcd1234^*()-=@@@sdfs'
+ secretc: 'asdfasdfasdfsdf345236^^^&&&'
+ expire: 300
+
+redis:
+ host: '127.0.0.1'
+ port: 6379
+
+consul:
+ host: '127.0.0.1'
+ port: 8500
