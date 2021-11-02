@@ -26,14 +26,14 @@ func (o *OrderListener)CheckLocalTransaction(msg * primitive.MessageExt)primitiv
 func main()  {
 	p, err := rocketmq.NewTransactionProducer(
 		&OrderListener{},
-		producer.WithNameServer([]string{"192.168.164.128:9876"}),)
+		producer.WithNameServer([]string{"192.168.199.130:9876"}))
 	if err != nil {
 		panic("create producer fail!")
 	}
 	if err = p.Start(); err != nil {
 		panic("start producer fail!")
 	}
-	res,err := p.SendMessageInTransaction(context.Background(),primitive.NewMessage("TransTopic",[]byte("this is transaction message 777777777777")))
+	res,err := p.SendMessageInTransaction(context.Background(),primitive.NewMessage("TransTopic123",[]byte("this is transaction message 888888")))
 	if err != nil {
 		fmt.Println("producer fail:%s\n", err.Error())
 	} else {
