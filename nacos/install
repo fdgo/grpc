@@ -5,6 +5,41 @@ http://127.0.0.1:8848/nacos/index.html#/login
 username: nacos
 password: nacos
 
+
+goods-web
+{
+    "name":"goods-web",
+    "tags":["imooc","bobby","goods","web"],
+    "host":"192.168.199.130",
+    "port":45571,
+    "mysql":{
+        "host": "120.27.239.127",
+        "port": 3306,
+        "user": "root",
+        "password": "000000",
+        "db":"mxshop_goods_web"
+    },
+    "consul":{
+         "host": "127.0.0.1",
+         "port": 8500
+    },
+    "jaeger":{
+         "name": "goods-srv",
+         "port": 44571,
+         "host": "192.168.199.130"
+    },
+    "goods_srv":{
+         "name": "goods-srv",
+         "port": 44571,
+         "host": "192.168.199.130"
+    },
+    "jwt":{
+         "key": "abcdefg123456"
+    }
+}
+
+
+goods-srv
 {
     "name":"goods-srv",
     "tags":["imooc","bobby","goods","srv"],
@@ -71,5 +106,5 @@ sudo docker run --name es --restart=always -p 9200:9200 -p 9300:9300 \
 -v /data/es/plugins:/usr/share/elasticsearch/plugins \
 -d elasticsearch:7.10.1
 
-sudo docker run -d --restart=always --name kibana -e ELASTICSEARCH_HOSTS="http://192.168.199.128:9200" -p 5601:5601 kibana:7.10.1
+sudo docker run -d --restart=always --name kibana -e ELASTICSEARCH_HOSTS="http://192.168.199.130:9200" -p 5601:5601 kibana:7.10.1
 ********************************************************************************************************************************************************
