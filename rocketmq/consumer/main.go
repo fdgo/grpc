@@ -11,13 +11,13 @@ import (
 
 func main() {
 	c, _ := rocketmq.NewPushConsumer(
-		consumer.WithNameServer([]string{"192.168.164.128:9876"}),
+		consumer.WithNameServer([]string{"192.168.199.130:9876"}),
 		consumer.WithGroupName("mxshop"),
 
 	)
-	if err := c.Subscribe("imooc1", consumer.MessageSelector{}, func(ctx context.Context, msgs ...*primitive.MessageExt) (consumer.ConsumeResult, error) {
+	if err := c.Subscribe("TransTopic", consumer.MessageSelector{}, func(ctx context.Context, msgs ...*primitive.MessageExt) (consumer.ConsumeResult, error) {
 		for i := range msgs {
-			fmt.Printf("get msg :%v\n", msgs[i])
+			fmt.Printf("GGGGGGGGGGet  msg :%v\n", msgs[i])
 		}
 		return consumer.ConsumeSuccess, nil
 	}); err != nil {

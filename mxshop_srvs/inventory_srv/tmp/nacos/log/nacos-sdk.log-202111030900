@@ -1,0 +1,22 @@
+2021-11-03T09:58:01.183+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"94e9c428-7efc-4f70-80af-f8e3fa06d8db"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-11-03T09:58:01.189+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"94e9c428-7efc-4f70-80af-f8e3fa06d8db"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-11-03T09:58:01.192+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"94e9c428-7efc-4f70-80af-f8e3fa06d8db"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-11-03T09:58:01.192+0800	[34mINFO[0m	get config from server error:[404] config data not exist
+ 
+2021-11-03T09:58:54.194+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"94e9c428-7efc-4f70-80af-f8e3fa06d8db"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-11-03T09:58:54.196+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"94e9c428-7efc-4f70-80af-f8e3fa06d8db"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-11-03T09:58:54.197+0800	[31mERROR[0m	api</v1/cs/configs>,method:<GET>, params:<{"dataId":"inventory-srv.json","group":"dev","tenant":"94e9c428-7efc-4f70-80af-f8e3fa06d8db"}>, call domain error:<[404] config data not exist
+> , result:<config data not exist
+>
+2021-11-03T09:58:54.197+0800	[34mINFO[0m	get config from server error:[404] config data not exist
+ 
