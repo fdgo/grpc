@@ -16,7 +16,11 @@ func main() {
 	// implements the `redis.Pool` interface.
 	//这里的变量哪些可以放到global中， redis的配置是否应该在nacos中
 	client := goredislib.NewClient(&goredislib.Options{
+<<<<<<< HEAD
 		Addr: "192.168.199.131:6379",
+=======
+		Addr: "192.168.0.104:6379",
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	})
 	pool := goredis.NewPool(client) // or, pool := redigo.NewPool(...)
 

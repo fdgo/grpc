@@ -14,7 +14,10 @@ import (
 
 func InitSrvConn(){
 	consulInfo := global.ServerConfig.ConsulInfo
+<<<<<<< HEAD
 	fmt.Println("777777777777777777",fmt.Sprintf("consul://%s:%d/%s?wait=14s", consulInfo.Host, consulInfo.Port, global.ServerConfig.GoodsSrvInfo.Name))
+=======
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	goodsConn, err := grpc.Dial(
 		fmt.Sprintf("consul://%s:%d/%s?wait=14s", consulInfo.Host, consulInfo.Port, global.ServerConfig.GoodsSrvInfo.Name),
 		grpc.WithInsecure(),
@@ -27,7 +30,11 @@ func InitSrvConn(){
 
 	global.GoodsSrvClient = proto.NewGoodsClient(goodsConn)
 
+<<<<<<< HEAD
 	fmt.Println("88888888888888888888",fmt.Sprintf("consul://%s:%d/%s?wait=14s", consulInfo.Host, consulInfo.Port, global.ServerConfig.InventorySrvInfo.Name))
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	//初始化库存服务连接
 	invConn, err := grpc.Dial(
 		fmt.Sprintf("consul://%s:%d/%s?wait=14s", consulInfo.Host, consulInfo.Port, global.ServerConfig.InventorySrvInfo.Name),

@@ -15,7 +15,11 @@ func main() {
 		consumer.WithGroupName("mxshop"),
 
 	)
+<<<<<<< HEAD
 	if err := c.Subscribe("TransTopic", consumer.MessageSelector{}, func(ctx context.Context, msgs ...*primitive.MessageExt) (consumer.ConsumeResult, error) {
+=======
+	if err := c.Subscribe("TransTopic123", consumer.MessageSelector{}, func(ctx context.Context, msgs ...*primitive.MessageExt) (consumer.ConsumeResult, error) {
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 		for i := range msgs {
 			fmt.Printf("GGGGGGGGGGet  msg :%v\n", msgs[i])
 		}

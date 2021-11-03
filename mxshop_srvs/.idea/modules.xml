@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
@@ -5,4 +6,13 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/mxshop_srvs.iml" filepath="$PROJECT_DIR$/.idea/mxshop_srvs.iml" />
     </modules>
   </component>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/mxshop_srvs.iml" filepath="$PROJECT_DIR$/.idea/mxshop_srvs.iml" />
+    </modules>
+  </component>
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 </project>

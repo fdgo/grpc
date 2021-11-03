@@ -72,7 +72,11 @@ func main() {
 	serviceID := fmt.Sprintf("%s", uuid.NewV4())
 	registration.ID = serviceID
 	registration.Port = *Port
+<<<<<<< HEAD
 	registration.Tags = []string{"imooc", "bobby", "user", "srv"}
+=======
+	registration.Tags = global.ServerConfig.Tags
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	registration.Address = global.ServerConfig.Host
 	registration.Check = check
 	//1. 如何启动两个服务

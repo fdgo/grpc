@@ -1,31 +1,49 @@
-sudo docker run --name nacos-standalone -e MODE=standalone -e JVM_XMS=512m -e JVM_XMX=512m -e JVM_XMN=256m -p 8848:8848 -d nacos/nacos-server:latest
+sudo docker run --name nacos-standalone --restart=always -e MODE=standalone -e JVM_XMS=512m -e JVM_XMX=512m -e JVM_XMN=256m -p 8848:8848 -d nacos/nacos-server:latest
 
 http://127.0.0.1:8848/nacos/index.html#/login
 
 username: nacos
 password: nacos
 
+order-web
 {
-    "name":"goods-srv",
-    "tags":["imooc","bobby","goods","srv"],
+    "name":"order-web",
+    "tags":["imooc","bobby","order","web"],
+    "host":"192.168.199.131",
+    "port":45571,
     "mysql":{
         "host": "120.27.239.127",
         "port": 3306,
         "user": "root",
         "password": "000000",
-        "db":"mxshop_goods_srv"
+        "db":"mxshop_order_web"
     },
     "consul":{
          "host": "127.0.0.1",
          "port": 8500
     },
-    "es":{
-         "host": "127.0.0.1",
-         "port": 9200
+    "jaeger":{
+         "name": "goods-srv",
+         "port": 44571,
+         "host": "192.168.199.130"
+    },
+    "goods_srv":{
+         "name": "goods-srv",
+         "port": 44571,
+         "host": "192.168.199.131"
+    },
+    "order_srv":{
+         "name": "order-srv",
+         "port": 44571,
+         "host": "192.168.199.131"
+    },
+    "inventory_srv":{
+         "name": "inventory-srv",
+         "port": 44571,
+         "host": "192.168.199.131"
     }
 }
-
-order
+order-srv
 {
     "name":"order-srv",
     "tags":["imooc","bobby","order","srv"],
@@ -52,9 +70,63 @@ order
         "name":"inventory-srv"
     }
 }
+
+
+goods-web
+{
+    "name":"goods-web",
+    "tags":["imooc","bobby","goods","web"],
+    "host":"192.168.199.130",
+    "port":45571,
+    "mysql":{
+        "host": "120.27.239.127",
+        "port": 3306,
+        "user": "root",
+        "password": "000000",
+        "db":"mxshop_goods_web"
+    },
+    "consul":{
+         "host": "127.0.0.1",
+         "port": 8500
+    },
+    "jaeger":{
+         "name": "goods-srv",
+         "port": 44571,
+         "host": "192.168.199.130"
+    },
+    "goods_srv":{
+         "name": "goods-srv",
+         "port": 44571,
+         "host": "192.168.199.130"
+    },
+    "jwt":{
+         "key": "abcdefg123456"
+    }
+}
+goods-srv
+{
+    "name":"goods-srv",
+    "tags":["imooc","bobby","goods","srv"],
+    "mysql":{
+        "host": "120.27.239.127",
+        "port": 3306,
+        "user": "root",
+        "password": "000000",
+        "db":"mxshop_goods_srv"
+    },
+    "consul":{
+         "host": "127.0.0.1",
+         "port": 8500
+    },
+    "es":{
+         "host": "127.0.0.1",
+         "port": 9200
+    }
+}
+
+
 ********************************************************************************************************************************************************
-sudo docker run -d -p 8500:8500 -p 8300:8300 -p 8301:8301 -p 8302:8302 -p 8600:8600/udp consul:1.8 consul agent -dev -client=0.0.0.0
-sudo docker container update --restart=always
+sudo docker run -d  --restart=always --name consul -p 8500:8500 -p 8300:8300 -p 8301:8301 -p 8302:8302 -p 8600:8600/udp consul consul agent -dev -client=0.0.0.0
 ********************************************************************************************************************************************************
 sudo mkdir -p /data/es/config
 sudo mkdir -p /data/es/data
@@ -64,7 +136,7 @@ cd /data/es/config
 sudo touch elasticsearch.yml
 echo "http.host: 0.0.0.0" >> /data/es/config/elasticsearch.yml
 
-sudo docker run --name es -p 9200:9200 -p 9300:9300 \
+sudo docker run --name es --restart=always -p 9200:9200 -p 9300:9300 \
 -e "discovery.type=single-node" \
 -e ES_JAVA_OPTS="-Xms64m -Xmx128m" \
 -v /data/es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
@@ -72,5 +144,5 @@ sudo docker run --name es -p 9200:9200 -p 9300:9300 \
 -v /data/es/plugins:/usr/share/elasticsearch/plugins \
 -d elasticsearch:7.10.1
 
-sudo docker run -d --name kibana -e ELASTICSEARCH_HOSTS="http://192.168.199.128:9200" -p 5601:5601 kibana:7.10.1
+sudo docker run -d --restart=always --name kibana -e ELASTICSEARCH_HOSTS="http://192.168.199.130:9200" -p 5601:5601 kibana:7.10.1
 ********************************************************************************************************************************************************

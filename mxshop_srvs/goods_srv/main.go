@@ -59,11 +59,18 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+<<<<<<< HEAD
 	fmt.Println("cccccccc",global.ServerConfig.Host, *Port)
 	//生成对应的检查对象
 	check := &api.AgentServiceCheck{
 		GRPC:                           fmt.Sprintf("%s:%d", global.ServerConfig.Host, *Port),
 		Timeout:                        "1s",
+=======
+	//生成对应的检查对象
+	check := &api.AgentServiceCheck{
+		GRPC:                           fmt.Sprintf("%s:%d", global.ServerConfig.Host, *Port),
+		Timeout:                        "5s",
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 		Interval:                       "5s",
 		DeregisterCriticalServiceAfter: "15s",
 	}

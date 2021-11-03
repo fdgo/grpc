@@ -20,13 +20,21 @@ func GetEnvInfo(env string) bool {
 
 func InitConfig(){
 	//从配置文件中读取出对应的配置
+<<<<<<< HEAD
 	debug := true//GetEnvInfo("MXSHOP_DEBUG")
+=======
+	debug :=true //GetEnvInfo("MXSHOP_DEBUG")
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	configFilePrefix := "config"
 	configFileName := fmt.Sprintf("%s-pro.yaml", configFilePrefix)
 	if debug {
 		configFileName = fmt.Sprintf("%s-debug.yaml", configFilePrefix)
 	}
+<<<<<<< HEAD
 
+=======
+fmt.Println( configFileName,"5555555555")
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	v := viper.New()
 	//文件的路径如何设置
 	v.SetConfigFile(configFileName)
@@ -65,7 +73,11 @@ func InitConfig(){
 	if err != nil {
 		panic(err)
 	}
+<<<<<<< HEAD
 
+=======
+fmt.Println(global.NacosConfig.DataId,"44444444",global.NacosConfig.Group)
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	content, err := configClient.GetConfig(vo.ConfigParam{
 		DataId: global.NacosConfig.DataId,
 		Group:  global.NacosConfig.Group})

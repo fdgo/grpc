@@ -205,7 +205,11 @@ func (o *OrderListener) ExecuteLocalTransaction(msg *primitive.Message) primitiv
 		goodsIds = append(goodsIds, shopCart.Goods)
 		goodsNumsMap[shopCart.Goods] = shopCart.Nums
 	}
+<<<<<<< HEAD
 fmt.Println("AAAAAAAAAAA")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	//跨服务调用商品微服务
 	queryGoodsSpan := opentracing.GlobalTracer().StartSpan("query_goods", opentracing.ChildOf(parentSpan.Context()))
 	goods, err := global.GoodsSrvClient.BatchGetGoods(context.Background(), &proto.BatchGoodsIdInfo{Id: goodsIds})
@@ -215,7 +219,11 @@ fmt.Println("AAAAAAAAAAA")
 		return primitive.RollbackMessageState
 	}
 	queryGoodsSpan.Finish()
+<<<<<<< HEAD
 	fmt.Println("BBBBBBBBBBBBB")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	var orderAmount float32
 	var orderGoods []*model.OrderGoods
 	var goodsInvInfo []*proto.GoodsInvInfo
@@ -243,8 +251,11 @@ fmt.Println("AAAAAAAAAAA")
 		任何一个服务出现了异常，那么你得调用对应的所有的微服务的cancel接口
 		如果所有的微服务都正常，那么你得调用所有的微服务的confirm
 	*/
+<<<<<<< HEAD
 
 	fmt.Println("CCCCCCCCCCCCCCC")
+=======
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	queryInvSpan := opentracing.GlobalTracer().StartSpan("query_inv", opentracing.ChildOf(parentSpan.Context()))
 	if _, err = global.InventorySrvClient.Sell(context.Background(), &proto.SellInfo{OrderSn:orderInfo.OrderSn, GoodsInfo: goodsInvInfo}); err != nil {
 		//如果是因为网络问题， 这种如何避免误判， 大家自己改写一下sell的返回逻辑
@@ -253,7 +264,11 @@ fmt.Println("AAAAAAAAAAA")
 		return primitive.RollbackMessageState
 	}
 	queryInvSpan.Finish()
+<<<<<<< HEAD
 	fmt.Println("DDDDDDDDDDDDDDDDDDDDDDDDD")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	//生成订单表
 	//20210308xxxx
 	tx := global.DB.Begin()
@@ -266,13 +281,18 @@ fmt.Println("AAAAAAAAAAA")
 		return primitive.CommitMessageState
 	}
 	saveOrderSpan.Finish()
+<<<<<<< HEAD
 	fmt.Println("EEEEEEEEEEEEEEE")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	o.OrderAmount = orderAmount
 	o.ID = orderInfo.ID
 	for _, orderGood := range orderGoods {
 		orderGood.Order = orderInfo.ID
 	}
 
+<<<<<<< HEAD
 	var tmp []*model.OrderGoods
 	tmp = append(tmp, &model.OrderGoods{
 		Order: 8888,
@@ -286,13 +306,22 @@ fmt.Println("AAAAAAAAAAA")
 	//批量插入orderGoods
 	saveOrderGoodsSpan := opentracing.GlobalTracer().StartSpan("save_order_goods", opentracing.ChildOf(parentSpan.Context()))
 	if result := tx.CreateInBatches(tmp, 100); result.RowsAffected == 0 {
+=======
+	//批量插入orderGoods
+	saveOrderGoodsSpan := opentracing.GlobalTracer().StartSpan("save_order_goods", opentracing.ChildOf(parentSpan.Context()))
+	if result := tx.CreateInBatches(orderGoods, 100); result.RowsAffected == 0 {
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 		tx.Rollback()
 		o.Code = codes.Internal
 		o.Detail = "批量插入订单商品失败"
 		return primitive.CommitMessageState
 	}
 	saveOrderGoodsSpan.Finish()
+<<<<<<< HEAD
 	fmt.Println("KKKKKKKKKKKKKKKKKKKKKKKKKKK")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	deleteShopCartSpan := opentracing.GlobalTracer().StartSpan("delete_shopcart", opentracing.ChildOf(parentSpan.Context()))
 	if result :=  tx.Where(&model.ShoppingCart{User:orderInfo.User, Checked:true}).Delete(&model.ShoppingCart{}); result.RowsAffected == 0 {
 		tx.Rollback()
@@ -301,9 +330,15 @@ fmt.Println("AAAAAAAAAAA")
 		return primitive.CommitMessageState
 	}
 	deleteShopCartSpan.Finish()
+<<<<<<< HEAD
 	fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvv")
 	//发送延时消息
 	p, err := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.199.131:9876"}))
+=======
+
+	//发送延时消息
+	p, err := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.0.104:9876"}))
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	if err != nil {
 		panic("生成producer失败")
 	}
@@ -321,7 +356,11 @@ fmt.Println("AAAAAAAAAAA")
 		o.Detail = "发送延时消息失败"
 		return primitive.CommitMessageState
 	}
+<<<<<<< HEAD
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	//if err = p.Shutdown(); err != nil {panic("关闭producer失败")}
 
 	//提交事务
@@ -344,7 +383,10 @@ func (o *OrderListener) CheckLocalTransaction(msg *primitive.MessageExt) primiti
 
 
 func (*OrderServer) CreateOrder(ctx context.Context, req *proto.OrderRequest) (*proto.OrderInfoResponse, error) {
+<<<<<<< HEAD
 	fmt.Println("createorder......")
+=======
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	/*
 	新建订单
 		1. 从购物车中获取到选中的商品
@@ -356,7 +398,11 @@ func (*OrderServer) CreateOrder(ctx context.Context, req *proto.OrderRequest) (*
 	orderListener := OrderListener{Ctx:ctx}
 	p, err := rocketmq.NewTransactionProducer(
 		&orderListener,
+<<<<<<< HEAD
 		producer.WithNameServer([]string{"192.168.199.131:9876"}),
+=======
+		producer.WithNameServer([]string{"192.168.0.104:9876"}),
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	)
 	if err != nil {
 		zap.S().Errorf("生成producer失败: %s", err.Error())
@@ -419,7 +465,11 @@ func OrderTimeout(ctx context.Context, msgs ...*primitive.MessageExt) (consumer.
 			order.Status = "TRADE_CLOSED"
 			tx.Save(&order)
 
+<<<<<<< HEAD
 			p, err := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.199.131:9876"}))
+=======
+			p, err := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.0.104:9876"}))
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 			if err != nil {
 				panic("生成producer失败")
 			}

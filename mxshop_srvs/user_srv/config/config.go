@@ -16,6 +16,10 @@ type ConsulConfig struct{
 type ServerConfig struct{
 	Name string `mapstructure:"name" json:"name"`
 	Host string `mapstructure:"host" json:"host"`
+<<<<<<< HEAD
+=======
+	Tags []string `mapstructure:"tags" json:"tags"`
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	MysqlInfo MysqlConfig `mapstructure:"mysql" json:"mysql"`
 	ConsulInfo ConsulConfig `mapstructure:"consul" json:"consul"`
 }

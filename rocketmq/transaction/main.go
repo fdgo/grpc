@@ -39,7 +39,11 @@ func main() {
 	if err = p.Start(); err != nil {
 		panic("start producer fail!")
 	}
+<<<<<<< HEAD
 	res, err := p.SendMessageInTransaction(context.Background(), primitive.NewMessage("TransTopic", []byte("this is transaction message 88888888888888")))
+=======
+	res,err := p.SendMessageInTransaction(context.Background(),primitive.NewMessage("TransTopic123",[]byte("this is transaction message 888888")))
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	if err != nil {
 		fmt.Println("producer fail:%s\n", err.Error())
 	} else {

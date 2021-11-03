@@ -2,6 +2,10 @@ package handler
 
 import (
 	"context"
+<<<<<<< HEAD
+=======
+	"encoding/json"
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	"fmt"
 	"github.com/olivere/elastic/v7"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -59,7 +63,11 @@ func (s *GoodsServer) GoodsList(ctx context.Context, req *proto.GoodsFilterReque
 
 	//关键词搜索、查询新品、查询热门商品、通过价格区间筛选， 通过商品分类筛选
 	goodsListResponse := &proto.GoodsListResponse{}
+<<<<<<< HEAD
 fmt.Println("1111111111")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	//match bool 复合查询
 	q := elastic.NewBoolQuery()
 	localDB := global.DB.Model(model.Goods{})
@@ -84,7 +92,11 @@ fmt.Println("1111111111")
 	if req.Brand > 0 {
 		q = q.Filter(elastic.NewTermQuery("brands_id", req.Brand))
 	}
+<<<<<<< HEAD
 	fmt.Println("2222222222222")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	//通过category去查询商品
 	var subQuery string
 	categoryIds := make([]interface{}, 0)
@@ -114,7 +126,11 @@ fmt.Println("1111111111")
 		//生成terms查询
 		q = q.Filter(elastic.NewTermsQuery("category_id", categoryIds...))
 	}
+<<<<<<< HEAD
 	fmt.Println("3333333333333")
+=======
+
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	//分页
 	if req.Pages == 0 {
 		req.Pages = 1
@@ -126,6 +142,7 @@ fmt.Println("1111111111")
 	case req.PagePerNums <= 0:
 		req.PagePerNums = 10
 	}
+<<<<<<< HEAD
 	//result, err := global.EsClient.Search().Index(model.EsGoods{}.GetIndexName()).Query(q).From(int(req.Pages)).Size(int(req.PagePerNums)).Do(context.Background())
 	//if err != nil {
 	//	return nil, err
@@ -155,6 +172,34 @@ fmt.Println("1111111111")
 
 	goodsListResponse.Total =998
 	return goodsListResponse,nil
+=======
+	result, err := global.EsClient.Search().Index(model.EsGoods{}.GetIndexName()).Query(q).From(int(req.Pages)).Size(int(req.PagePerNums)).Do(context.Background())
+	if err != nil {
+		return nil, err
+	}
+
+ 	goodsIds := make([]int32, 0)
+	goodsListResponse.Total = int32(result.Hits.TotalHits.Value)
+	for _, value := range result.Hits.Hits {
+		goods := model.EsGoods{}
+		_ = json.Unmarshal(value.Source, &goods)
+		goodsIds = append(goodsIds, goods.ID)
+	}
+
+	//查询id在某个数组中的值
+	var goods []model.Goods
+	re := localDB.Preload("Category").Preload("Brands").Find(&goods, goodsIds)
+	if re.Error != nil {
+		return nil, re.Error
+	}
+
+	for _, good := range goods {
+		goodsInfoResponse := ModelToResponse(good)
+		goodsListResponse.Data = append(goodsListResponse.Data, &goodsInfoResponse)
+	}
+
+	return goodsListResponse, nil
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 }
 
 //现在用户提交订单有多个商品，你得批量查询商品的信息吧

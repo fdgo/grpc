@@ -69,7 +69,11 @@ func main() {
 
 	//监听库存归还topic
 	c, _ := rocketmq.NewPushConsumer(
+<<<<<<< HEAD
 		consumer.WithNameServer([]string{"127.0.0.1:9876"}),
+=======
+		consumer.WithNameServer([]string{"192.168.164.128:9876"}),
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 		consumer.WithGroupName("mxshop-inventory"),
 	)
 

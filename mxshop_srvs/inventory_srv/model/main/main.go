@@ -22,7 +22,11 @@ func genMd5(code string) string{
 }
 
 func main() {
+<<<<<<< HEAD
 	dsn := "root:000000@tcp(120.27.239.127:3306)/mxshop_inventory_srv?charset=utf8mb4&parseTime=True&loc=Local"
+=======
+	dsn := "root:root@tcp(192.168.0.104:3306)/mxshop_inventory_srv?charset=utf8mb4&parseTime=True&loc=Local"
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 
 	newLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
@@ -44,7 +48,11 @@ func main() {
 		panic(err)
 	}
 
+<<<<<<< HEAD
 	_ = db.AutoMigrate(&model.Inventory{}, &model.StockSellDetail{})
+=======
+	//_ = db.AutoMigrate(&model.Inventory{}, &model.StockSellDetail{})
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	//插入一条数据
 	//orderDetail := model.StockSellDetail{
 	//	OrderSn: "imooc-bobby",

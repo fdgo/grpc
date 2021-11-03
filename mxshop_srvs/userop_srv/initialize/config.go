@@ -20,11 +20,19 @@ func GetEnvInfo(env string) bool {
 
 func InitConfig(){
 	//从配置文件中读取出对应的配置
+<<<<<<< HEAD
 	debug := GetEnvInfo("MXSHOP_DEBUG")
 	configFilePrefix := "config"
 	configFileName := fmt.Sprintf("userop_srv/%s-pro.yaml", configFilePrefix)
 	if debug {
 		configFileName = fmt.Sprintf("userop_srv/%s-debug.yaml", configFilePrefix)
+=======
+	debug :=true //GetEnvInfo("MXSHOP_DEBUG")
+	configFilePrefix := "config"
+	configFileName := fmt.Sprintf("%s-pro.yaml", configFilePrefix)
+	if debug {
+		configFileName = fmt.Sprintf("%s-debug.yaml", configFilePrefix)
+>>>>>>> 46eb3b74e18e70cbe7738bdbe69f4a5cf2a72cb6
 	}
 
 	v := viper.New()
