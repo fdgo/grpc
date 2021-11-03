@@ -1,0 +1,7 @@
+host: '192.168.199.131'
+port: 8848
+namespace: '4e51095f-c8fd-4460-907f-009ca46faeae'
+user: 'nacos'
+password: 'nacos'
+dataid: 'user-srv.json'
+group: 'dev'

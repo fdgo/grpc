@@ -1,0 +1,37 @@
+{
+    "name":"order-web",
+    "tags":["imooc","bobby","order","web"],
+    "host":"192.168.199.131",
+    "port":45571,
+    "mysql":{
+        "host": "120.27.239.127",
+        "port": 3306,
+        "user": "root",
+        "password": "000000",
+        "db":"mxshop_order_web"
+    },
+    "consul":{
+         "host": "127.0.0.1",
+         "port": 8500
+    },
+    "jaeger":{
+         "name": "goods-srv",
+         "port": 44571,
+         "host": "192.168.199.130"
+    },
+    "goods_srv":{
+         "name": "goods-srv",
+         "port": 44571,
+         "host": "192.168.199.131"
+    },
+    "order_srv":{
+         "name": "order-srv",
+         "port": 50051,
+         "host": "192.168.199.131"
+    },
+    "inventory_srv":{
+         "name": "inventory-srv",
+         "port": 44571,
+         "host": "192.168.199.131"
+    }
+}
