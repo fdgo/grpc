@@ -6,7 +6,6 @@ username: nacos
 password: nacos
 
 order-web
-
 {
     "name":"order-web",
     "tags":["imooc","bobby","order","web"],
@@ -44,6 +43,34 @@ order-web
          "host": "192.168.199.131"
     }
 }
+order-srv
+{
+    "name":"order-srv",
+    "tags":["imooc","bobby","order","srv"],
+    "host":"192.168.199.128",
+    "mysql":{
+        "host": "120.27.239.127",
+        "port": 3306,
+        "user": "root",
+        "password": "000000",
+        "db":"mxshop_order_srv"
+    },
+    "consul":{
+         "host": "127.0.0.1",
+         "port": 8500
+    },
+    "es":{
+         "host": "127.0.0.1",
+         "port": 9200
+    },
+    "goods_srv":{
+        "name":"goods-srv"
+    },
+    "inventory_srv":{
+        "name":"inventory-srv"
+    }
+}
+
 
 goods-web
 {
@@ -76,8 +103,6 @@ goods-web
          "key": "abcdefg123456"
     }
 }
-
-
 goods-srv
 {
     "name":"goods-srv",
@@ -99,33 +124,7 @@ goods-srv
     }
 }
 
-order
-{
-    "name":"order-srv",
-    "tags":["imooc","bobby","order","srv"],
-    "host":"192.168.199.128",
-    "mysql":{
-        "host": "120.27.239.127",
-        "port": 3306,
-        "user": "root",
-        "password": "000000",
-        "db":"mxshop_order_srv"
-    },
-    "consul":{
-         "host": "127.0.0.1",
-         "port": 8500
-    },
-    "es":{
-         "host": "127.0.0.1",
-         "port": 9200
-    },
-    "goods_srv":{
-        "name":"goods-srv"
-    },
-    "inventory_srv":{
-        "name":"inventory-srv"
-    }
-}
+
 ********************************************************************************************************************************************************
 sudo docker run -d  --restart=always --name consul -p 8500:8500 -p 8300:8300 -p 8301:8301 -p 8302:8302 -p 8600:8600/udp consul consul agent -dev -client=0.0.0.0
 ********************************************************************************************************************************************************
