@@ -1,7 +1,7 @@
 {
     "name":"order-web",
     "tags":["imooc","bobby","order","web"],
-    "host":"192.168.199.131",
+    "host":"192.168.199.137",
     "port":45571,
     "mysql":{
         "host": "120.27.239.127",
@@ -17,21 +17,21 @@
     "jaeger":{
          "name": "goods-srv",
          "port": 44571,
-         "host": "192.168.199.130"
+         "host": "127.0.0.1"
     },
     "goods_srv":{
          "name": "goods-srv",
          "port": 44571,
-         "host": "192.168.199.131"
+         "host": "127.0.0.1"
     },
     "order_srv":{
          "name": "order-srv",
          "port": 50051,
-         "host": "192.168.199.131"
+         "host": "127.0.0.1"
     },
     "inventory_srv":{
          "name": "inventory-srv",
          "port": 44571,
-         "host": "192.168.199.131"
+         "host": "127.0.0.1"
     }
 }

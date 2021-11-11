@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8662e3ad-3371-4420-9f7d-d6eaf1d89baa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../mxshop_srvs/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/cache/config/goods-srv.json@@dev@@03f8b66a-6bc0-4e57-817c-f4f0a3a8eff9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/cache/config/goods-srv.json@@dev@@89cdf9b9-aac2-40df-920c-113fc42d85d4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/cache/config/inventory.json@@dev@@577e038f-c40d-4c8b-82d2-7eca7689d740" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/cache/config/inventory.json@@dev@@bb3d9300-9f2a-4991-a81a-e094a98b409e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/cache/config/order-srv.json@@dev@@33e87cdd-f43e-4d1f-be35-d94c9e39baf7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/cache/config/user-srv.json@@dev@@6af9810f-2e08-4e9e-ab52-ae2868fe5fcc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/cache/config/user-web.json@@dev@@6af9810f-2e08-4e9e-ab52-ae2868fe5fcc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/cache/config/userop_srv.json@@dev@@3d6a2af2-3f81-4819-815b-bb375034092b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mxshop_srvs/tmp/nacos/log/nacos-sdk.log-202103090000" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="$USER_HOME$/soft/go1.16.9" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="20OxUvfjyjnLXpXrWI943DW2yPl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+</project>

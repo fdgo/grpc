@@ -55,7 +55,7 @@ func main() {
 		},
 		Reporter: &jaegercfg.ReporterConfig{
 			LogSpans: true,
-			LocalAgentHostPort:"192.168.199.131:6831",
+			LocalAgentHostPort:"192.168.199.137:6831",
 		},
 		ServiceName:"mxshop",
 	}
@@ -94,7 +94,7 @@ func main() {
 
 	//监听订单超时topic
 	c, _ := rocketmq.NewPushConsumer(
-		consumer.WithNameServer([]string{"192.168.199.131:9876"}),
+		consumer.WithNameServer([]string{"192.168.199.137:9876"}),
 		consumer.WithGroupName("mxshop-order"),
 	)
 

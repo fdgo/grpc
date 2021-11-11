@@ -53,14 +53,15 @@ func (*InventoryServer) Sell(ctx context.Context, req *proto.SellInfo) (*emptypb
 
 	fmt.Println("sell............")
 	client := goredislib.NewClient(&goredislib.Options{
-		Addr: "192.168.199.131:6379",
+		Addr: "192.168.199.137:6379",
+		Password: "962012d09b8170d912f0669f6d7d9d07",
 	})
 	pool := goredis.NewPool(client) // or, pool := redigo.NewPool(...)
 	rs := redsync.New(pool)
 
 	tx := global.DB.Begin()
 	//m.Lock() //获取锁 这把锁有问题吗？  假设有10w的并发， 这里并不是请求的同一件商品  这个锁就没有问题了吗？
-
+	fmt.Println("sell....3333333333333333")
 	//这个时候应该先查询表，然后确定这个订单是否已经扣减过库存了，已经扣减过了就别扣减了
 	//并发时候会有漏洞， 同一个时刻发送了重复了多次， 使用锁，分布式锁
 	sellDetail := model.StockSellDetail{
@@ -79,13 +80,14 @@ func (*InventoryServer) Sell(ctx context.Context, req *proto.SellInfo) (*emptypb
 		//	tx.Rollback() //回滚之前的操作
 		//	return nil, status.Errorf(codes.InvalidArgument, "没有库存信息")
 		//}
-
+		fmt.Println("sell....xxxxxxxxxx",goodInfo.GoodsId)
 		//for {
 		mutex := rs.NewMutex(fmt.Sprintf("goods_%d", goodInfo.GoodsId))
 		if err := mutex.Lock(); err != nil {
+			fmt.Println("sell....??????????",err)
 			return nil, status.Errorf(codes.Internal, "获取redis分布式锁异常")
 		}
-
+		fmt.Println("sell....44444444444444")
 		if result := global.DB.Where(&model.Inventory{Goods:goodInfo.GoodsId}).First(&inv); result.RowsAffected == 0 {
 			tx.Rollback() //回滚之前的操作
 			return nil, status.Errorf(codes.InvalidArgument, "没有库存信息")
@@ -103,7 +105,7 @@ func (*InventoryServer) Sell(ctx context.Context, req *proto.SellInfo) (*emptypb
 			return nil, status.Errorf(codes.Internal, "释放redis分布式锁异常")
 		}
 			//update inventory set stocks = stocks-1, version=version+1 where goods=goods and version=version
-			//这种写法有瑕疵，为什么？
+			//这种写法有瑕疵，为什么？R
 			//零值 对于int类型来说 默认值是0 这种会被gorm给忽略掉
 			//if result := tx.Model(&model.Inventory{}).Select("Stocks", "Version").Where("goods = ? and version= ?", goodInfo.GoodsId, inv.Version).Updates(model.Inventory{Stocks: inv.Stocks, Version: inv.Version+1}); result.RowsAffected == 0 {
 			//	zap.S().Info("库存扣减失败")
@@ -114,6 +116,7 @@ func (*InventoryServer) Sell(ctx context.Context, req *proto.SellInfo) (*emptypb
 		//tx.Save(&inv)
 	}
 	sellDetail.Detail = details
+	fmt.Println("sell....8888888888888888888")
 	//写selldetail表
 	if result := tx.Create(&sellDetail); result.RowsAffected == 0 {
 		tx.Rollback()
@@ -147,7 +150,7 @@ func (*InventoryServer) TrySell(ctx context.Context, req *proto.SellInfo) (*empt
 	//数据库基本的一个应用场景：数据库事务
 	//并发情况之下 可能会出现超卖 1
 	client := goredislib.NewClient(&goredislib.Options{
-		Addr: "192.168.199.131:6379",
+		Addr: "192.168.199.137:6379",
 	})
 	pool := goredis.NewPool(client) // or, pool := redigo.NewPool(...)
 	rs := redsync.New(pool)
@@ -205,7 +208,7 @@ func (*InventoryServer) ConfirmSell(ctx context.Context, req *proto.SellInfo) (*
 	//数据库基本的一个应用场景：数据库事务
 	//并发情况之下 可能会出现超卖 1
 	client := goredislib.NewClient(&goredislib.Options{
-		Addr: "192.168.199.131:6379",
+		Addr: "192.168.199.137:6379",
 	})
 	pool := goredis.NewPool(client) // or, pool := redigo.NewPool(...)
 	rs := redsync.New(pool)
@@ -263,7 +266,7 @@ func (*InventoryServer) CancelSell(ctx context.Context, req *proto.SellInfo) (*e
 	//数据库基本的一个应用场景：数据库事务
 	//并发情况之下 可能会出现超卖 1
 	client := goredislib.NewClient(&goredislib.Options{
-		Addr: "192.168.199.131:6379",
+		Addr: "192.168.199.137:6379",
 	})
 	pool := goredis.NewPool(client) // or, pool := redigo.NewPool(...)
 	rs := redsync.New(pool)
@@ -339,6 +342,7 @@ func AutoReback(ctx context.Context, msgs ...*primitive.MessageExt) (consumer.Co
 		}
 		//如果查询到那么逐个归还库存
 		for _, orderGood := range sellDetail.Detail {
+			fmt.Println("归还库存归还库存归还库存")
 			//update怎么用
 			//先查询一下inventory表在， update语句的 update xx set stocks=stocks+2
 			if result := tx.Model(&model.Inventory{}).Where(&model.Inventory{Goods:orderGood.Goods}).Update("stocks", gorm.Expr("stocks+?", orderGood.Num));result.RowsAffected == 0{

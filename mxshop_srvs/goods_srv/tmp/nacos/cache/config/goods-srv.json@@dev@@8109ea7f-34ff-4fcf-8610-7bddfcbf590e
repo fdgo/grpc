@@ -1,7 +1,7 @@
 {
     "name":"goods-srv",
     "tags":["imooc","bobby","goods","srv"],
-    "host":"192.168.199.131",
+    "host":"192.168.199.137",
     "mysql":{
         "host": "120.27.239.127",
         "port": 3306,

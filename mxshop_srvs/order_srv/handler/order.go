@@ -186,6 +186,7 @@ type OrderListener struct{
 }
 
 func (o *OrderListener) ExecuteLocalTransaction(msg *primitive.Message) primitive.LocalTransactionState {
+	fmt.Println("order....ExecLocal")
 	var orderInfo model.OrderInfo
 	_ = json.Unmarshal(msg.Body, &orderInfo)
 	parentSpan := opentracing.SpanFromContext(o.Ctx)
@@ -273,19 +274,19 @@ fmt.Println("AAAAAAAAAAA")
 		orderGood.Order = orderInfo.ID
 	}
 
-	var tmp []*model.OrderGoods
-	tmp = append(tmp, &model.OrderGoods{
-		Order: 8888,
-	})
-	tmp = append(tmp, &model.OrderGoods{
-		Order: 7777,
-	})
-	tmp = append(tmp, &model.OrderGoods{
-		Order: 66666,
-	})
+	//var tmp []*model.OrderGoods
+	//tmp = append(tmp, &model.OrderGoods{
+	//	Order: 8888,
+	//})
+	//tmp = append(tmp, &model.OrderGoods{
+	//	Order: 7777,
+	//})
+	//tmp = append(tmp, &model.OrderGoods{
+	//	Order: 66666,
+	//})
 	//批量插入orderGoods
 	saveOrderGoodsSpan := opentracing.GlobalTracer().StartSpan("save_order_goods", opentracing.ChildOf(parentSpan.Context()))
-	if result := tx.CreateInBatches(tmp, 100); result.RowsAffected == 0 {
+	if result := tx.CreateInBatches(orderGoods, 100); result.RowsAffected == 0 {
 		tx.Rollback()
 		o.Code = codes.Internal
 		o.Detail = "批量插入订单商品失败"
@@ -303,7 +304,7 @@ fmt.Println("AAAAAAAAAAA")
 	deleteShopCartSpan.Finish()
 	fmt.Println("vvvvvvvvvvvvvvvvvvvvvvvvvvv")
 	//发送延时消息
-	p, err := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.199.131:9876"}))
+	p, err := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.199.137:9876"}))
 	if err != nil {
 		panic("生成producer失败")
 	}
@@ -312,7 +313,7 @@ fmt.Println("AAAAAAAAAAA")
 	if err = p.Start(); err != nil {panic("启动producer失败")}
 
 	msg = primitive.NewMessage("order_timeout", msg.Body)
-	msg.WithDelayTimeLevel(3)
+	msg.WithDelayTimeLevel(14)
 	_, err = p.SendSync(context.Background(), msg)
 	if err != nil {
 		zap.S().Errorf("发送延时消息失败: %v\n", err)
@@ -356,7 +357,7 @@ func (*OrderServer) CreateOrder(ctx context.Context, req *proto.OrderRequest) (*
 	orderListener := OrderListener{Ctx:ctx}
 	p, err := rocketmq.NewTransactionProducer(
 		&orderListener,
-		producer.WithNameServer([]string{"192.168.199.131:9876"}),
+		producer.WithNameServer([]string{"192.168.199.137:9876"}),
 	)
 	if err != nil {
 		zap.S().Errorf("生成producer失败: %s", err.Error())
@@ -419,7 +420,7 @@ func OrderTimeout(ctx context.Context, msgs ...*primitive.MessageExt) (consumer.
 			order.Status = "TRADE_CLOSED"
 			tx.Save(&order)
 
-			p, err := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.199.131:9876"}))
+			p, err := rocketmq.NewProducer(producer.WithNameServer([]string{"192.168.199.137:9876"}))
 			if err != nil {
 				panic("生成producer失败")
 			}
